@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Testing & Coverage
+coverage
+test-results
+playwright-report
+.nyc_output
+
+# Logs & Cache
+*.log
+.tsbuildinfo
+.DS_Store
