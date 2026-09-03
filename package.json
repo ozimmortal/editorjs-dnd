@@ -1,52 +1,58 @@
 {
-  "name": "editorjs-dnd",
-  "version": "0.1.0",
-  "description": "A drag and drop plugin for Editor.js",
-  "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "types": "./dist/index.d.ts","scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "biome lint .",
-    "format": "biome format --write .",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
-    "test:playwright": "playwright test",
-    "test:playwright:report": "playwright show-report",
-    "changeset": "changeset",
-    "prepublishOnly": "pnpm build"
-  },
-  "keywords": [
-    "editorjs",
-    "editor.js",
-    "editorjs-plugin",
-    "drag-and-drop",
-    "dnd",
-    "typescript"
-  ],
-  "author": "Oliyad Zelalem Abdena",
-  "license": "MIT",
-  "packageManager": "pnpm@10.33.4",
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.11",
-    "@changesets/cli": "^3.0.1",
-    "playwright": "^1.62.1",
-    "tsup": "^8.5.1",
-    "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
-  }
+	"name": "editorjs-dnd",
+	"version": "0.1.0",
+	"description": "A drag and drop plugin for Editor.js",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"unpkg": "./dist/index.global.js",
+	"jsdelivr": "./dist/index.global.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.global.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint . --fix",
+		"format": "biome format --write .",
+		"test": "vitest run",
+		"test:watch": "vitest watch",
+		"test:coverage": "vitest run --coverage",
+		"test:playwright": "playwright test",
+		"test:playwright:report": "playwright show-report",
+		"changeset": "changeset",
+		"prepublishOnly": "pnpm build"
+	},
+	"keywords": [
+		"editorjs",
+		"editor.js",
+		"editorjs-plugin",
+		"drag-and-drop",
+		"dnd",
+		"typescript"
+	],
+	"author": "Oliyad Zelalem Abdena",
+	"license": "MIT",
+	"packageManager": "pnpm@10.33.4",
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.11",
+		"@changesets/cli": "^3.0.1",
+		"@editorjs/editorjs": "^2.31.6",
+		"playwright": "^1.62.1",
+		"tsup": "^8.5.1",
+		"typescript": "^5.7.3",
+		"vitest": "^4.1.11"
+	}
 }
