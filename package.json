@@ -1,6 +1,6 @@
 {
 	"name": "editorjs-dnd",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A drag and drop plugin for Editor.js",
 	"type": "module",
 	"main": "./dist/index.cjs",
@@ -40,11 +40,13 @@
 		"dnd",
 		"typescript"
 	],
+	"repository": "https://github.com/ozimmortal/editorjs-dnd",
 	"author": "Oliyad Zelalem Abdena",
 	"license": "MIT",
 	"packageManager": "pnpm@10.33.4",
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.11",
+		"@changesets/changelog-github": "^1.0.1",
 		"@changesets/cli": "^3.0.1",
 		"@editorjs/editorjs": "^2.31.6",
 		"jsdom": "^30.0.1",
