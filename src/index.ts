@@ -1,4 +1,5 @@
 import "./index.css";
+import type EditorJS from "@editorjs/editorjs";
 import type { API, EditorConfig } from "@editorjs/editorjs";
 
 type BorderStyle =
@@ -19,11 +20,9 @@ export interface DragDropOptions {
 	dropLineSize?: number;
 }
 
-export interface DragDropEditor {
+type EditorJSWithConfiguration = EditorJS & {
 	configuration: EditorConfig;
-	blocks: API["blocks"];
-	toolbar: API["toolbar"];
-}
+};
 
 export default class DragDrop {
 	holder: HTMLElement;
@@ -37,14 +36,15 @@ export default class DragDrop {
 	endBlockIndex: number | null;
 	ghostElement: HTMLElement | null;
 
-	constructor(editor: DragDropEditor, options: DragDropOptions = {}) {
+	constructor(editor: EditorJS, options: DragDropOptions = {}) {
 		const {
 			dropLineColor = "#7c00f0",
 			dropLineStyle = "solid",
 			dropLineSize = 2,
 		} = options;
 
-		const holder = editor.configuration.holder;
+		const configuration = (editor as EditorJSWithConfiguration).configuration;
+		const holder = configuration.holder;
 
 		const element =
 			typeof holder === "string" ? document.getElementById(holder) : holder;
@@ -61,7 +61,7 @@ export default class DragDrop {
 		this.dropLineStyle = dropLineStyle;
 		this.dropLineSize = dropLineSize;
 
-		this.readOnly = editor.configuration.readOnly ?? false;
+		this.readOnly = configuration.readOnly ?? false;
 		this.startBlockIndex = null;
 		this.endBlockIndex = null;
 		this.ghostElement = null;

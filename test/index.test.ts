@@ -1,11 +1,17 @@
 // @vitest-environment jsdom
-
+import type EditorJS from "@editorjs/editorjs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { DragDropEditor } from "../src/index";
 import DragDrop from "../src/index";
 
+type TestEditorJS = EditorJS & {
+	configuration: {
+		holder: HTMLElement | string;
+		readOnly?: boolean;
+	};
+};
+
 describe("DragDrop", () => {
-	let editor: DragDropEditor;
+	let editor: TestEditorJS;
 	let dragDropInstance: DragDrop;
 	let button: HTMLElement;
 
@@ -32,20 +38,18 @@ describe("DragDrop", () => {
 				holder,
 				readOnly: false,
 			},
-
 			blocks: {
 				getCurrentBlockIndex: vi.fn().mockReturnValue(0),
 				getBlockByIndex: vi.fn(),
 				getBlocksCount: vi.fn().mockReturnValue(2),
 				move: vi.fn(),
 			},
-
 			toolbar: {
 				close: vi.fn(),
 			},
-		} as unknown as DragDropEditor;
+		} as unknown as TestEditorJS;
 
-		dragDropInstance = new DragDrop(editor);
+		dragDropInstance = new DragDrop(editor as unknown as EditorJS);
 		button = dragDropInstance.holder.querySelector(
 			".ce-toolbar__settings-btn",
 		) as HTMLElement;
@@ -60,7 +64,7 @@ describe("DragDrop", () => {
 				holder: "does-not-exist",
 				readOnly: false,
 			},
-		} as unknown as DragDropEditor;
+		} as unknown as EditorJS;
 
 		expect(() => new DragDrop(invalidEditor)).toThrow(
 			"Editor holder element not found",
@@ -85,8 +89,6 @@ describe("DragDrop", () => {
 		targetElement.dispatchEvent(new Event("drop", { bubbles: true }));
 		expect(editor.blocks.move).toHaveBeenCalledWith(1, 0);
 	});
-
-
 
 	it("should return the drop target when a valid target is provided", () => {
 		const targetElement = document.getElementById("second") as HTMLElement;

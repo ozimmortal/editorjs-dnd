@@ -3,12 +3,7 @@
 	"baseBranch": "main",
 	"access": "public",
 	"format": "auto",
-	"changelog": [
-		"@changesets/changelog-github",
-		{
-			"repo": "ozimmortal/editorjs-dnd"
-		}
-	],
+	"changelog": "@changesets/cli/changelog",
 	"commit": true,
 	"ignore": [],
 	"fixed": [],
