@@ -1,6 +1,6 @@
 {
 	"name": "editorjs-dnd",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "A drag and drop plugin for Editor.js",
 	"type": "module",
 	"main": "./dist/index.cjs",

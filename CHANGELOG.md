@@ -1,5 +1,11 @@
 # editorjs-dnd
 
+## 0.2.1
+
+### Patch Changes
+
+- df28843: improve package documentation
+
 ## 0.2.0
 
 ### Minor Changes
