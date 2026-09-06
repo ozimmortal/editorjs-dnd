@@ -26,16 +26,16 @@ export interface DragDropEditor {
 }
 
 export default class DragDrop {
-	private holder: HTMLElement;
-	private blocks: API["blocks"];
-	private toolbar: API["toolbar"];
-	private dropLineColor: string;
-	private dropLineStyle: BorderStyle;
-	private dropLineSize: number;
-	private readOnly: boolean;
-	private startBlockIndex: number | null;
-	private endBlockIndex: number | null;
-	private ghostElement: HTMLElement | null;
+	holder: HTMLElement;
+	blocks: API["blocks"];
+	toolbar: API["toolbar"];
+	dropLineColor: string;
+	dropLineStyle: BorderStyle;
+	dropLineSize: number;
+	readOnly: boolean;
+	startBlockIndex: number | null;
+	endBlockIndex: number | null;
+	ghostElement: HTMLElement | null;
 
 	constructor(editor: DragDropEditor, options: DragDropOptions = {}) {
 		const {
